@@ -1,0 +1,20 @@
+name = "splitter-frontend"
+
+[env.production]
+account_id = "your-account-id-here"
+
+[env.preview]
+account_id = "your-account-id-here"
+
+[build]
+command = "npm run build"
+# REMOVED: cwd = "app/front" (no longer needed)
+destination = "dist"
+
+[env.production.vars]
+VITE_API_URL = "https://your-backend.onrender.com/api/v1"
+
+[env.preview.vars]
+VITE_API_URL = "https://your-backend.onrender.com/api/v1"
+
+# ... keep the rest (headers, redirects)

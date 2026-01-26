@@ -1,0 +1,129 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Literata';
+  src: url('./assets/fonts/Literata-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Literata';
+  src: url('./assets/fonts/Literata-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Literata';
+  src: url('./assets/fonts/Literata-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 225 8% 13%;
+
+    --card: 225 8% 30%;
+    --card-foreground: 225 8% 13%;
+
+    --grey-1: 0 0% 100%;
+    --grey-1: 0 0% 96%;
+
+    --grey-2: 0 0% 100%;
+    --grey-2: 0 0% 92%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 225 8% 13%;
+
+    --primary: 225 8% 13;
+    --primary-foreground: 225 8% 13;
+
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 225 8% 13%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --placeholder: 0 0% 96%;
+    --placeholder-foreground: 220, 3%, 78%, 1;
+
+    --accent: 0 0% 96%;
+    --accent-foreground: 225 8% 13%;
+
+    --accent-tint: 0 0% 96%;
+    --accent-tint-foreground: 210 88% 97%;
+
+    --destructive: 254 99% 92%;
+    --destructive-foreground: 254 99% 70%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 211 99% 52%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 225 8% 13%;
+    --foreground: 0 0% 100%;
+
+    --card: 225 8% 13%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 225 8% 13%;
+    --popover-foreground: 0 0% 100%;
+
+    --primary: 211 99% 52%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 211 99% 52%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    font-size: 14px;
+  }
+
+  h1 {
+    @apply text-center text-2xl font-semibold leading-snug text-foreground md:text-5xl md:leading-snug;
+  }
+  h2 {
+    @apply -mb-6 text-center text-2xl font-normal leading-relaxed tracking-tight text-foreground md:text-5xl md:leading-[1.25em];
+  }
+  h3 {
+    @apply text-left text-base font-semibold text-foreground md:text-2xl;
+  }
+  p {
+    @apply text-center text-base font-normal leading-relaxed text-foreground md:text-2xl;
+  }
+
+  small {
+    @apply text-xs md:text-base;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
