@@ -35,11 +35,7 @@ export function Dashboard() {
 						{isLoading ? (
 							<p className='text-left'>Loading houses...</p>
 						) : houses.length === 0 ? (
-							<p className='text-left'>
-								{user?.role === "organizer"
-									? "You don't have any houses yet."
-									: "You have not been added as a house member yet."}
-							</p>
+							<p className='text-left'>You don&apos;t have any houses yet. Create one or wait to be invited.</p>
 						) : (
 							<div className='space-y-6'>
 								{houses.map(house => (
@@ -71,11 +67,9 @@ export function Dashboard() {
 
 				<SectionWrapper>
 					<div className='flex flex-col gap-4'>
-						{user?.role === "organizer" && (
-							<Button variant='split' asChild>
-								<Link to='/houses/create'>Create New House</Link>
-							</Button>
-						)}
+						<Button variant='split' asChild>
+							<Link to='/houses/create'>Create New House</Link>
+						</Button>
 						<Button variant='split' asChild>
 							<Link to='/profile'>Edit Your Profile</Link>
 						</Button>

@@ -3,7 +3,7 @@ export interface User {
   email: string;
   firstName: string;
   lastName: string;
-  role: 'organizer' | 'tenant' | 'admin';
+  isAdmin: boolean;
   created_at: string;
   updated_at: string;
 }
