@@ -45,15 +45,15 @@ export function MemberSummaryCard({ member, houseId }: MemberSummaryCardProps) {
 				<p>
 					{member.firstName} {member.lastName}
 				</p>
-			{transferOrganizer.isSuccess ? (
-				<Alert className='self-center' variant='split' role='status' aria-live='polite'>
-					<AlertDescription>Organizer role transferred successfully.</AlertDescription>
-				</Alert>
-			) : transferOrganizer.isError ? (
-				<Alert className='self-start' variant='split_destructive' role='status' aria-live='polite'>
-					<AlertDescription>Failed to transfer organizer role. Please try again.</AlertDescription>
-				</Alert>
-			) : confirmingDelete ? (
+				{transferOrganizer.isSuccess ? (
+					<Alert className='self-center' variant='split' role='status' aria-live='polite'>
+						<AlertDescription>Organizer role transferred successfully.</AlertDescription>
+					</Alert>
+				) : transferOrganizer.isError ? (
+					<Alert className='self-start' variant='split_destructive' role='status' aria-live='polite'>
+						<AlertDescription>Failed to transfer organizer role. Please try again.</AlertDescription>
+					</Alert>
+				) : confirmingDelete ? (
 					<>
 						<Button
 							variant='split_ghost'
@@ -74,12 +74,12 @@ export function MemberSummaryCard({ member, houseId }: MemberSummaryCardProps) {
 					</>
 				) : confirmingTransfer ? (
 					<>
-						<p className='text-xs text-muted-foreground md:text-base'>
-							{member.firstName} will become organizer. You will become a member.
+						<p className='text-xs text-foreground md:text-base mb-2'>
+							{member.firstName} will become organizer! You will become a member
 						</p>
 						<Button
 							variant='split_ghost'
-							className='!text-xs text-destructive-foreground hover:text-destructive-foreground/80 md:!text-base mt-1'
+							className='!text-xs text-destructive-foreground hover:text-destructive-foreground/80 md:!text-base'
 							onClick={handleTransferClick}
 							disabled={transferOrganizer.isPending}
 						>
@@ -87,7 +87,7 @@ export function MemberSummaryCard({ member, houseId }: MemberSummaryCardProps) {
 						</Button>
 						<Button
 							variant='split_ghost'
-							className='!text-xs md:!text-base'
+							className='!text-xs text-muted-foreground md:!text-base'
 							onClick={() => setConfirmingTransfer(false)}
 							disabled={transferOrganizer.isPending}
 						>
