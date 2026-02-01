@@ -66,12 +66,12 @@ export function Dashboard() {
 				</SectionWrapper>
 
 				<SectionWrapper>
-					<div className='flex flex-col gap-4'>
-						<Button variant='split' asChild>
-							<Link to='/houses/create'>Create New House</Link>
-						</Button>
+					<div className='flex flex-col gap-8'>
 						<Button variant='split' asChild>
 							<Link to='/profile'>Edit Your Profile</Link>
+						</Button>
+						<Button variant='split_small' asChild>
+							<Link to='/houses/create'>Create New House</Link>
 						</Button>
 					</div>
 				</SectionWrapper>

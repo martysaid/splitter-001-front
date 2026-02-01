@@ -18,6 +18,8 @@ const buttonVariants = cva(
 				link: "text-primary underline-offset-4 hover:underline",
 				split:
 					"text-base font-normal text-foreground underline underline-offset-8 hover:text-foreground/70 md:text-2xl !py-0",
+				split_small:
+					"text-sm font-normal text-foreground underline underline-offset-8 hover:text-foreground/70 md:text-lg !py-0",
 				split_ghost: "text-base font-normal text-foreground hover:text-foreground/70 md:text-2xl !py-0",
 			},
 			size: {
