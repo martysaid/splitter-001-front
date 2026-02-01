@@ -63,6 +63,14 @@ export interface ListHousesResponse {
   };
 }
 
+export interface TransferOrganizerResponse {
+  status: string;
+  data: {
+    message: string;
+    house: House;
+  };
+}
+
 export const houseService = {
   async createHouse(data: CreateHouseRequest): Promise<CreateHouseResponse> {
     const response = await api.post<CreateHouseResponse>('/houses', data);
@@ -76,6 +84,17 @@ export const houseService = {
 
   async listHouses(): Promise<ListHousesResponse> {
     const response = await api.get<ListHousesResponse>('/houses');
+    return response.data;
+  },
+
+  async transferOrganizer(
+    houseId: string,
+    newOrganizerId: string
+  ): Promise<TransferOrganizerResponse> {
+    const response = await api.post<TransferOrganizerResponse>(
+      `/houses/${houseId}/transfer-organizer`,
+      { newOrganizerId }
+    );
     return response.data;
   },
 };

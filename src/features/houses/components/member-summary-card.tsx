@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { formatDaysUntilDue } from '@/lib/date-utils';
 import type { MemberSummary } from '../types/house-dashboard.types';
 import { useDeleteMember } from '../hooks/use-delete-member';
+import { useTransferOrganizer } from '../hooks/use-transfer-organizer';
 
 interface MemberSummaryCardProps {
   member: MemberSummary;
@@ -12,7 +13,9 @@ interface MemberSummaryCardProps {
 
 export function MemberSummaryCard({ member, houseId }: MemberSummaryCardProps) {
   const [confirmingDelete, setConfirmingDelete] = useState(false);
+  const [confirmingTransfer, setConfirmingTransfer] = useState(false);
   const deleteMember = useDeleteMember(houseId);
+  const transferOrganizer = useTransferOrganizer(houseId);
 
   const formatCurrency = (amount: number) => {
     if (amount === null || amount === undefined) return '$0.00';
@@ -24,6 +27,14 @@ export function MemberSummaryCard({ member, houseId }: MemberSummaryCardProps) {
       deleteMember.mutate(member.memberId);
     } else {
       setConfirmingDelete(true);
+    }
+  };
+
+  const handleTransferClick = () => {
+    if (confirmingTransfer) {
+      transferOrganizer.mutate(member.userId);
+    } else {
+      setConfirmingTransfer(true);
     }
   };
 
@@ -52,14 +63,45 @@ export function MemberSummaryCard({ member, houseId }: MemberSummaryCardProps) {
               changed my mind
             </Button>
           </>
+        ) : confirmingTransfer ? (
+          <>
+            <p className="text-xs text-muted-foreground md:text-sm">
+              {member.firstName} will become organizer. You will become a member.
+            </p>
+            <Button
+              variant="split_ghost"
+              className="!text-xs text-destructive-foreground hover:text-destructive-foreground/80 md:!text-base"
+              onClick={handleTransferClick}
+              disabled={transferOrganizer.isPending}
+            >
+              {`yes, transfer to ${member.firstName}`}
+            </Button>
+            <Button
+              variant="split_ghost"
+              className="!text-xs md:!text-base"
+              onClick={() => setConfirmingTransfer(false)}
+              disabled={transferOrganizer.isPending}
+            >
+              changed my mind
+            </Button>
+          </>
         ) : (
-          <Button
-            variant="split_ghost"
-            className="!text-xs md:!text-base"
-            onClick={handleDeleteClick}
-          >
-            {`delete, ${member.firstName}`}
-          </Button>
+          <>
+            <Button
+              variant="split_ghost"
+              className="!text-xs md:!text-base"
+              onClick={handleDeleteClick}
+            >
+              {`delete, ${member.firstName}`}
+            </Button>
+            <Button
+              variant="split_ghost"
+              className="!text-xs md:!text-base"
+              onClick={handleTransferClick}
+            >
+              {`transfer organizer role`}
+            </Button>
+          </>
         )}
       </div>
       <div className="flex flex-grow-[.2] flex-col items-end gap-3">

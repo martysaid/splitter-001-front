@@ -33,6 +33,7 @@ export interface OwedExpense {
 
 export interface MemberSummary {
   memberId: string;
+  userId: string;
   firstName: string;
   lastName: string;
   email: string;
