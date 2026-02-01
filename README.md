@@ -106,18 +106,21 @@ VITE_API_BASE_URL=http://localhost:8080/api/v1
 ## Features
 
 ### Authentication
+
 - Magic link authentication
 - JWT token management
 - Protected routes with auth guards
 - Automatic token refresh
 
 ### Houses & Expenses
+
 - Create and manage houses
 - Track shared expenses
 - Member management with invitations
 - Expense splitting
 
 ### UI Components
+
 - Accessible components via Radix UI primitives
 - Consistent design system
 - Responsive design
@@ -155,6 +158,7 @@ Configured for **Cloudflare Pages** via `wrangler.toml` and GitHub Actions.
 ### Automatic Deployment (CI/CD)
 
 On push to `main`, the GitHub Actions workflow will:
+
 1. Run tests, linting, and type-checking
 2. Build the application
 3. Deploy to Cloudflare Pages
@@ -164,7 +168,7 @@ On push to `main`, the GitHub Actions workflow will:
 Configure these in your GitHub repo: **Settings → Secrets and variables → Actions**
 
 | Secret | Description | How to obtain |
-|--------|-------------|---------------|
+| --- | --- | --- |
 | `CLOUDFLARE_API_TOKEN` | API token with Pages permissions | Cloudflare Dashboard → My Profile → API Tokens → Create Token → Use "Edit Cloudflare Workers" template or create custom with "Cloudflare Pages:Edit" permission |
 | `CLOUDFLARE_ACCOUNT_ID` | Your Cloudflare account ID | Cloudflare Dashboard → Overview → Copy Account ID from right sidebar |
 | `VITE_API_URL` | Backend API URL | e.g., `https://your-backend.up.railway.app/api/v1` |
