@@ -12,7 +12,7 @@ const alertVariants = cva(
         destructive:
           'border-destructive text-destructive dark:border-destructive [&>svg]:text-destructive',
         split:
-          '!w-fit self-end inline-flex whitespace-pre-line rounded-[.5rem] text-base inline-block rounded-[.5rem] bg-white border-solid border-destructive-foreground px-6 py-4 text-left text-xs font-normal tracking-wide text-destructive-foreground md:text-2xl [&>div]:text-base [&>div]:text-right md:[&>div]:text-2xl ',
+          '!w-fit self-end inline-flex whitespace-pre-line rounded-[.5rem] text-base inline-block rounded-[.5rem] bg-white border-solid border-destructive-foreground px-6 py-4 text-left text-xs font-normal tracking-wide text-destructive-foreground md:text-2xl [&>div]:text-base [&>div]:text-center md:[&>div]:text-2xl ',
         split_destructive:
           'inline-block whitespace-pre-line rounded-[.5rem] border-none text-base inline-block rounded-[.5rem] bg-destructive px-6 py-4 text-left text-xs font-normal tracking-wide text-destructive-foreground md:text-2xl [&>div]:text-base [&>div]:text-center md:[&>div]:text-2xl ',
       },
