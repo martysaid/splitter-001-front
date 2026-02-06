@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 
@@ -12,7 +12,8 @@ interface UseInviteMemberFormOptions {
 
 export const useInviteMemberForm = ({ houseId }: UseInviteMemberFormOptions) => {
   const [error, setError] = useState<string | null>(null);
-  const [success, setSuccess] = useState<string | null>(null);
+  const [inviteSent, setInviteSent] = useState(false);
+  const [sentEmail, setSentEmail] = useState('');
 
   const form = useForm<InviteMemberFormData>({
     resolver: zodResolver(inviteMemberSchema),
@@ -24,25 +25,22 @@ export const useInviteMemberForm = ({ houseId }: UseInviteMemberFormOptions) => 
     },
   });
 
-  useEffect(() => {
-    if (success) {
-      const timeoutId = setTimeout(() => {
-        setSuccess(null);
-      }, 10000);
-      return () => clearTimeout(timeoutId);
-    }
-  }, [success]);
-
   const clearMessages = () => {
     setError(null);
-    setSuccess(null);
+  };
+
+  const resetInviteSent = () => {
+    setInviteSent(false);
+    setSentEmail('');
+    clearMessages();
   };
 
   const onSubmit = async (data: InviteMemberFormData) => {
     clearMessages();
     try {
       await memberService.inviteMember(houseId, data);
-      setSuccess(`Invitation sent successfully to ${data.email}.`);
+      setSentEmail(data.email);
+      setInviteSent(true);
       form.reset();
     } catch (err) {
       logError('[use-invite-member-form] onSubmit', err);
@@ -54,7 +52,9 @@ export const useInviteMemberForm = ({ houseId }: UseInviteMemberFormOptions) => 
     form,
     onSubmit,
     error,
-    success,
     clearMessages,
+    inviteSent,
+    sentEmail,
+    resetInviteSent,
   };
 };

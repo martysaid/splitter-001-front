@@ -1,5 +1,5 @@
 import { useNavigate } from '@tanstack/react-router';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { useAuth } from '@/features/auth/hooks/use-auth';
 import { invitationsService } from '@/services/invitations.service';
@@ -77,7 +77,10 @@ export function useAcceptInvitation({ token }: UseAcceptInvitationProps) {
     }
   }, [token, setUser, navigate]);
 
+  const hasRun = useRef(false);
   useEffect(() => {
+    if (hasRun.current) return;
+    hasRun.current = true;
     performAcceptance();
   }, [performAcceptance]);
 

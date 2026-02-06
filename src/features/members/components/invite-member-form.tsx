@@ -19,7 +19,6 @@ interface InviteMemberFormProps {
   form: ReturnType<typeof useInviteMemberForm>['form'];
   onSubmit: ReturnType<typeof useInviteMemberForm>['onSubmit'];
   error: ReturnType<typeof useInviteMemberForm>['error'];
-  success: ReturnType<typeof useInviteMemberForm>['success'];
   clearMessages: ReturnType<typeof useInviteMemberForm>['clearMessages'];
 }
 
@@ -27,7 +26,6 @@ export const InviteMemberForm = ({
   form,
   onSubmit,
   error,
-  success,
   clearMessages,
 }: InviteMemberFormProps) => {
   const [isMoveInPickerOpen, setIsMoveInPickerOpen] = useState(false);
@@ -172,14 +170,6 @@ export const InviteMemberForm = ({
                 aria-live="polite"
               >
                 <AlertDescription>{error}</AlertDescription>
-              </Alert>
-            </div>
-          )}
-
-          {success && (
-            <div className="flex w-full flex-col">
-              <Alert className="self-center" variant="split" role="status" aria-live="polite">
-                <AlertDescription>{success}</AlertDescription>
               </Alert>
             </div>
           )}
