@@ -21,7 +21,7 @@ function Signup() {
       <PageWrapper>
         <Header />
         <MainWrapper>
-          <FormSent type="signup" />
+          <FormSent type="signup" email={form.getValues('email')} />
         </MainWrapper>
         <Footer />
       </PageWrapper>

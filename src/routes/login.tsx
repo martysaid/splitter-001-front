@@ -21,7 +21,7 @@ function Login() {
       <PageWrapper>
         <Header />
         <MainWrapper>
-          <FormSent type="login" />
+          <FormSent type="login" email={form.getValues('email')} />
         </MainWrapper>
         <Footer />
       </PageWrapper>
