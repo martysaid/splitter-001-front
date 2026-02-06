@@ -33,6 +33,9 @@ export function MemberSummary({ members, houseId }: MemberSummaryProps) {
   return (
     <SectionWrapper>
       <h2>Member Summary.</h2>
+      <Button variant="split" onClick={handleInviteMember}>
+        <div>Invite Member</div>
+      </Button>
       <div className="flex w-full flex-col gap-8">
         {members.map(member => (
           <MemberSummaryCard key={member.memberId} member={member} houseId={houseId} />
