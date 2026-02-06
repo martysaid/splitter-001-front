@@ -120,13 +120,10 @@ export const CreateHouseForm = ({ form, onSubmit }: CreateHouseFormProps) => {
               name="default_payment_due_days"
               render={({ field }) => (
                 <FormItem>
-                  <Select
-                    onValueChange={value => field.onChange(Number(value))}
-                    defaultValue={String(field.value)}
-                  >
+                  <Select onValueChange={value => field.onChange(Number(value))}>
                     <FormControl>
                       <SelectTrigger variant={'split'}>
-                        <SelectValue placeholder="Default Payment Due Days" />
+                        <SelectValue placeholder="Default payment period" />
                       </SelectTrigger>
                     </FormControl>
                     <SelectContent>
