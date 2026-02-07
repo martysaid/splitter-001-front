@@ -1,11 +1,8 @@
 name = "splitter-frontend"
+pages_build_output_dir = "dist"
 
 # Account ID is passed via GitHub Actions secrets for security
 # Local development: set CLOUDFLARE_ACCOUNT_ID environment variable
-
-[build]
-command = "npm run build"
-destination = "dist"
 
 # VITE_API_URL is set at build time via GitHub Actions secrets
 # For local builds, set VITE_API_URL environment variable
